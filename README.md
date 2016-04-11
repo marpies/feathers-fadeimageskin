@@ -2,7 +2,7 @@
 
 Extension for Feathers library that enables alpha transition between different component state skins.
 
-### Overview
+## Overview
 
 Usage is identical to the original [ImageSkin](https://github.com/BowlerHatLLC/feathers/blob/master/source/feathers/skins/ImageSkin.as):
 
@@ -45,10 +45,10 @@ skin.colorTweenTransition = Transitions.EASE_OUT;
 button.defaultSkin = skin;
 ```
 
-### Requirements
+## Requirements
 
 * [Starling Framework 2.0+](https://github.com/Gamua/Starling-Framework)
 * [Feathers 3.0+](https://github.com/BowlerHatLLC/feathers)
 
-### Author
+## Author
 [Marcel Piestansky](https://twitter.com/marpies)
