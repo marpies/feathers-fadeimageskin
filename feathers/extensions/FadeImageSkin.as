@@ -113,7 +113,7 @@ package feathers.extensions {
             mFadeInTransition = mColorTweenTransition = Transitions.EASE_OUT;
             mFadeOutTransition = Transitions.EASE_IN;
             mDefaultColor = uint.MAX_VALUE;
-            mDefaultColor = uint.MAX_VALUE;
+            mDisabledColor = uint.MAX_VALUE;
             mSelectedColor = uint.MAX_VALUE;
 
             mStateToTexture = {};
@@ -229,6 +229,7 @@ package feathers.extensions {
         private function delayedTransition():void {
             mToggleTransitionDC = 0;
             updateTextureFromContext();
+            updateColorFromContext();
         }
 
         /**
@@ -427,6 +428,7 @@ package feathers.extensions {
                 mStateContext.addEventListener( FeathersEventType.STATE_CHANGE, onStateContextChanged );
             }
             updateTextureFromContext();
+            updateColorFromContext();
         }
 
         /**
