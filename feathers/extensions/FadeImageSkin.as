@@ -801,6 +801,122 @@ package feathers.extensions {
             mColorTweenTransition = value;
         }
 
+        /**
+         * The default color to use to tint the skin. If the component
+         * being skinned supports states, the color for a specific state may
+         * be specified using the <code>setColorForState()</code> method. If
+         * no color has been specified for the current state, the default
+         * color will be used.
+         *
+         * <p>A value of <code>uint.MAX_VALUE</code> means that the
+         * <code>color</code> property will not be changed when the context's
+         * state changes.</p>
+         *
+         * <p>In the following example, the default color is specified:</p>
+         *
+         * <listing version="3.0">
+         * var skin:FadeImageSkin = new FadeImageSkin();
+         * skin.defaultColor = 0x9f0000;</listing>
+         *
+         * @default uint.MAX_VALUE
+         *
+         * @see #disabledColor
+         * @see #selectedColor
+         * @see #setColorForState()
+         */
+        public function get defaultColor():uint {
+            return mDefaultColor;
+        }
+
+        /**
+         * @private
+         */
+        public function set defaultColor( value:uint ):void {
+            if( mDefaultColor === value ) {
+                return;
+            }
+            mDefaultColor = value;
+            updateColorFromContext();
+        }
+
+        /**
+         * The color to tint the skin when the <code>stateContext</code> is
+         * an <code>IFeathersControl</code> and its <code>isEnabled</code>
+         * property is <code>false</code>. If a color has been specified for
+         * the context's current state with <code>setColorForState()</code>,
+         * it will take precedence over the <code>disabledColor</code>.
+         *
+         * <p>A value of <code>uint.MAX_VALUE</code> means that the
+         * <code>disabledColor</code> property cannot affect the tint when the
+         * context's state changes.</p>
+         *
+         * <p>In the following example, the disabled color is changed:</p>
+         *
+         * <listing version="3.0">
+         * var skin:FadeImageSkin = new FadeImageSkin();
+         * skin.defaultColor = 0xffffff;
+         * skin.disabledColor = 0x999999;
+         * button.skin = skin;
+         * button.isEnabled = false;</listing>
+         *
+         * @default uint.MAX_VALUE
+         *
+         * @see #defaultColor
+         * @see #selectedColor
+         * @see #setColorForState()
+         */
+        public function get disabledColor():uint {
+            return mDisabledColor;
+        }
+
+        /**
+         * @private
+         */
+        public function set disabledColor( value:uint ):void {
+            if( mDisabledColor === value ) {
+                return;
+            }
+            mDisabledColor = value;
+            updateColorFromContext();
+        }
+
+        /**
+         * The color to tint the skin when the <code>stateContext</code> is
+         * an <code>IToggle</code> instance and its <code>isSelected</code>
+         * property is <code>true</code>. If a color has been specified for
+         * the context's current state with <code>setColorForState()</code>,
+         * it will take precedence over the <code>selectedColor</code>.
+         *
+         * <p>In the following example, the selected color is changed:</p>
+         *
+         * <listing version="3.0">
+         * var skin:FadeImageSkin = new FadeImageSkin();
+         * skin.defaultColor = 0xffffff;
+         * skin.selectedColor = 0xffcc00;
+         * toggleButton.skin = skin;
+         * toggleButton.isSelected = true;</listing>
+         *
+         * @default uint.MAX_VALUE
+         *
+         * @see #defaultColor
+         * @see #disabledColor
+         * @see #setColorForState()
+         */
+        public function get selectedColor():uint {
+            return mSelectedColor;
+        }
+
+        /**
+         * @private
+         */
+        public function set selectedColor( value:uint ):void {
+            if( mSelectedColor === value ) {
+                return;
+            }
+            mSelectedColor = value;
+            updateColorFromContext();
+        }
+
     }
 
 }
