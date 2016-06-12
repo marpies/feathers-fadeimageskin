@@ -76,6 +76,8 @@ package feathers.extensions {
         protected var mExplicitHeight:Number;
         protected var mExplicitMinWidth:Number;
         protected var mExplicitMinHeight:Number;
+        protected var mExplicitMaxWidth:Number = Number.POSITIVE_INFINITY;
+        protected var mExplicitMaxHeight:Number = Number.POSITIVE_INFINITY;
         protected var mPreviousState:String;
         protected var mPreviousSkinTweenID:uint;
         protected var mActiveSkinTweenID:uint;
@@ -526,6 +528,38 @@ package feathers.extensions {
         }
 
         /**
+         * The value passed to the <code>maxWidth</code> property setter. If the
+         * <code>maxWidth</code> property has not be set, returns
+         * <code>NaN</code>.
+         *
+         * @see #maxWidth
+         */
+        public function get explicitMaxWidth():Number {
+            return mExplicitMaxWidth;
+        }
+
+        /**
+         * The maximum width of the component.
+         */
+        public function get maxWidth():Number {
+            return mExplicitMaxWidth;
+        }
+
+        /**
+         * @private
+         */
+        public function set maxWidth(value:Number):void {
+            if( mExplicitMaxWidth === value ) {
+                return;
+            }
+            if( value !== value && mExplicitMaxWidth !== mExplicitMaxWidth ) {
+                return;
+            }
+            mExplicitMaxWidth = value;
+            dispatchEventWith( Event.RESIZE );
+        }
+
+        /**
          * The value passed to the <code>minHeight</code> property setter. If
          * the <code>minHeight</code> property has not be set, returns
          * <code>NaN</code>.
@@ -551,6 +585,38 @@ package feathers.extensions {
                 return;
             }
             mExplicitMinHeight = value;
+            dispatchEventWith( Event.RESIZE );
+        }
+
+        /**
+         * The value passed to the <code>maxHeight</code> property setter. If
+         * the <code>maxHeight</code> property has not be set, returns
+         * <code>NaN</code>.
+         *
+         * @see #maxHeight
+         */
+        public function get explicitMaxHeight():Number {
+            return mExplicitMaxHeight;
+        }
+
+        /**
+         * The maximum height of the component.
+         */
+        public function get maxHeight():Number {
+            return mExplicitMaxHeight;
+        }
+
+        /**
+         * @private
+         */
+        public function set maxHeight(value:Number):void {
+            if( mExplicitMaxHeight === value ) {
+                return;
+            }
+            if( value !== value && mExplicitMaxHeight !== mExplicitMaxHeight ) {
+                return;
+            }
+            mExplicitMaxHeight = value;
             dispatchEventWith( Event.RESIZE );
         }
 
